@@ -1,6 +1,7 @@
-package net.simblo.core.user.service;
+package net.simblo.core.user.service.impl;
 
 import net.simblo.core.user.dao.UserDAO;
+import net.simblo.core.user.service.UserService;
 import net.simblo.core.user.vo.User;
 
 public class UserServiceImpl implements UserService {
@@ -29,6 +30,10 @@ public class UserServiceImpl implements UserService {
 	public User findByName(String name) {
 		// TODO Auto-generated method stub
 		return null;
+	}
+	
+	public void setUserDAO(UserDAO userDAO) {
+		this.userDAO = userDAO;
 	}
 
 }
