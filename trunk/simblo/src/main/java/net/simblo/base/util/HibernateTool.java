@@ -1,11 +1,14 @@
 package net.simblo.base.util;
 
+import net.simblo.core.user.vo.User;
+
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.AnnotationConfiguration;
+
 
 public class HibernateTool {
 
@@ -17,8 +20,9 @@ public class HibernateTool {
 		log.info("Initializing Hibernate SesstionFactory.");
 		try {
 			sessionFactory = new AnnotationConfiguration()
+			.addAnnotatedClass(User.class)
 //			.addAnnotatedClass(BaseUser.class)
-			.configure().buildSessionFactory();
+			.buildSessionFactory();
 			log.info("SessionFactory Initialization Succeed");
 		} catch (Throwable ex) {
 			log.error("Initial SessionFactory creation failed.", ex);

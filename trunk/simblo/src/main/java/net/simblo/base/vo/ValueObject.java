@@ -30,8 +30,8 @@ public class ValueObject implements IValueObject {
 	 * @return id;
 	 */
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY, generator = "MUSER_ID")
-	@GenericGenerator(name = "MUSER_ID", strategy = "uuid")
+	@GeneratedValue(strategy = GenerationType.IDENTITY, generator = "_ID")
+	@GenericGenerator(name = "_ID", strategy = "uuid")
 	public String getId() {
 		return id;
 	}
