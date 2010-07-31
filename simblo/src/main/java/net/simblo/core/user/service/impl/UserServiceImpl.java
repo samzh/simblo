@@ -5,13 +5,13 @@ import net.simblo.core.user.service.UserService;
 import net.simblo.core.user.vo.User;
 
 public class UserServiceImpl implements UserService {
-	
+
 	private UserDAO userDAO;
 
 	@Override
 	public void save(User user) {
 		try {
-			userDAO.save(user);
+			userDAO.create(user);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -21,7 +21,7 @@ public class UserServiceImpl implements UserService {
 	@Override
 	public void delete(User user) {
 		try {
-			userDAO.remove(user.getId());
+			userDAO.delete(user);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -31,7 +31,7 @@ public class UserServiceImpl implements UserService {
 	@Override
 	public User find(String id) throws Exception {
 		try {
-			return (User) userDAO.find(id);
+			return (User) userDAO.get(id);
 		} catch (Exception e) {
 			throw new Exception("User not found");
 		}
@@ -39,10 +39,10 @@ public class UserServiceImpl implements UserService {
 
 	@Override
 	public User findByName(String name) {
-		
+
 		return null;
 	}
-	
+
 	public void setUserDAO(UserDAO userDAO) {
 		this.userDAO = userDAO;
 	}

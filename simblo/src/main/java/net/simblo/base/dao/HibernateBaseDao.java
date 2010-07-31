@@ -1,94 +1,91 @@
 package net.simblo.base.dao;
 
+import java.io.Serializable;
+import java.lang.reflect.ParameterizedType;
 import java.util.Collection;
+import java.util.List;
 
 import net.simblo.base.action.ParamsTable;
 import net.simblo.base.util.HibernateTool;
-import net.simblo.base.vo.ValueObject;
 
-import org.hibernate.Session;
+import org.hibernate.criterion.Projections;
 import org.springframework.transaction.annotation.Transactional;
 
 @Transactional
-public class HibernateBaseDao extends BaseDao {
+public class HibernateBaseDao<T> extends BaseDao<T> {
 
-	public HibernateBaseDao(Class clazz) {
-		this._class = clazz;
+	private Class<T> clazz;
+
+	@SuppressWarnings("unchecked")
+	public HibernateBaseDao() {
+		// 通过反射获取T的类型信息实例
+		this.setClazz((Class<T>) ((ParameterizedType) this.getClass().getGenericSuperclass()).getActualTypeArguments()[0]);
 	}
 
-	private Class _class = null;
-
-	public void set_class(Class _class) {
-		this._class = _class;
+	public HibernateBaseDao(Class<T> clazz) {
+		this.clazz = clazz;
 	}
 
-	public Class get_class() {
-		return _class;
+	@Override
+	public void create(T entity) {
+		HibernateTool.getSession().save(entity);
+
 	}
 
-	/**
-	 * 保存VO
-	 * 
-	 * @throws Exception
-	 */
-	public void save(ValueObject vo) throws Exception {
-		Session session = HibernateTool.getSession();
-		session.beginTransaction();
-		try {
-			session.saveOrUpdate(vo);
+	@Override
+	public void delete(T entity) {
+		HibernateTool.getSession().delete(entity);
 
-			session.getTransaction().commit();
-		} catch (Exception e) {
-			e.printStackTrace();
-			session.getTransaction().rollback();
-		}
 	}
 
-	/**
-	 * 查找单个VO
-	 * 
-	 * @param id
-	 * @return 与ID对应的VO
-	 * @throws Exceptoin
-	 */
-	public ValueObject find(String id) throws Exception {
-		return (ValueObject) HibernateTool.getSession().load(get_class(), id);
+	@SuppressWarnings("unchecked")
+	@Override
+	public void update(T entity) {
+		entity = (T) HibernateTool.getSession().merge(entity);
+
 	}
 
-	/**
-	 * 返回所有VO
-	 * 
-	 * @return
-	 * @throws Exception
-	 */
-	public Collection<ValueObject> queryAll() throws Exception {
-		return null;
+	@SuppressWarnings("unchecked")
+	@Override
+	public T get(Serializable id) {
+		return (T) HibernateTool.getSession().load(clazz, id);
 	}
 
-	/**
-	 * 删除VO
-	 * 
-	 * @param id
-	 * @throws Exception
-	 */
-	@Transactional
-	public void remove(String id) throws Exception {
-		Session session = HibernateTool.getSession();
-		session.beginTransaction();
-		try {
-			ValueObject vo = find(id);
-			if (vo != null)
-				session.delete(vo);
-			
-			session.getTransaction().commit();
-		} catch (Exception e) {
-			e.printStackTrace();
-			session.getTransaction().rollback();
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<T> findAll() {
+		return HibernateTool.getSession().createCriteria(clazz).list();
+	}
+
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<T> findList(int pageNo, int pageSize) {
+		return HibernateTool.getSession().createCriteria(clazz).setFirstResult((pageNo - 1) * pageSize)
+				.setMaxResults(pageSize).list();
+	}
+
+	@Override
+	public int getCountOfAll() {
+		Integer count = (Integer) HibernateTool.getSession().createCriteria(clazz)
+				.setProjection(Projections.rowCount()).uniqueResult();
+		if (null == count) {
+			return 0;
+		} else {
+			return count.intValue();
 		}
 	}
 	
-	public void queryByParams(ParamsTable params) {
-		
+	@Override
+	public Collection<T> queryByParams(ParamsTable params) {
+		return null;
+	}
+
+	public void setClazz(Class<T> clazz) {
+		this.clazz = clazz;
+	}
+
+	public Class<T> getClazz() {
+		return clazz;
 	}
 
 }
