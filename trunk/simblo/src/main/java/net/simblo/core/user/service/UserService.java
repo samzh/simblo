@@ -8,7 +8,7 @@ public interface UserService {
 	
 	void delete(User user);
 	
-	User find(String id);
+	User find(String id) throws Exception;
 	
 	User findByName(String name);
 

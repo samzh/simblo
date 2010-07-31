@@ -2,6 +2,7 @@ package net.simblo.base.dao;
 
 import java.util.Collection;
 
+import net.simblo.base.action.ParamsTable;
 import net.simblo.base.util.HibernateTool;
 import net.simblo.base.vo.ValueObject;
 
@@ -84,6 +85,10 @@ public class HibernateBaseDao extends BaseDao {
 			e.printStackTrace();
 			session.getTransaction().rollback();
 		}
+	}
+	
+	public void queryByParams(ParamsTable params) {
+		
 	}
 
 }
