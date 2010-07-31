@@ -30,6 +30,7 @@ public class HibernateTool {
 		}
 	}
 
+	@SuppressWarnings("rawtypes")
 	public static final ThreadLocal session = new ThreadLocal();
 
 	/**
