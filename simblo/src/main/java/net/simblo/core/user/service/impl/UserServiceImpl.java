@@ -10,25 +10,36 @@ public class UserServiceImpl implements UserService {
 
 	@Override
 	public void save(User user) {
-		// TODO Auto-generated method stub
+		try {
+			userDAO.save(user);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 
 	}
 
 	@Override
 	public void delete(User user) {
-		// TODO Auto-generated method stub
+		try {
+			userDAO.remove(user.getId());
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 
 	}
 
 	@Override
-	public User find(String id) {
-		// TODO Auto-generated method stub
-		return null;
+	public User find(String id) throws Exception {
+		try {
+			return (User) userDAO.find(id);
+		} catch (Exception e) {
+			throw new Exception("User not found");
+		}
 	}
 
 	@Override
 	public User findByName(String name) {
-		// TODO Auto-generated method stub
+		
 		return null;
 	}
 	
