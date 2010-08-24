@@ -22,11 +22,18 @@
 		<property name="sessionFactory" ref="sessionFactory"/>
 	</bean>
 	
-	<bean id="userDAO" class="net.simblo.core.user.dao.impl.UserDAOImpl">
+	<bean id="userDAO" class="net.simblo.core.user.dao.UserDAO">
 	</bean>
 	
 	<bean id="userService" class="net.simblo.core.user.service.impl.UserServiceImpl">
 		<property name="userDAO" ref="userDAO" />
+	</bean>
+	
+	<bean id="postService" class="net.simblo.core.post.service.impl.PostServiceImpl">
+		<property name="postDAO" ref="postDAO" />
+	</bean>
+	
+	<bean id="postDAO" class="net.simblo.core.post.dao.impl.PostDAOImpl">
 	</bean>
 
 	<!-- Hibernate SessionFactory configuration -->

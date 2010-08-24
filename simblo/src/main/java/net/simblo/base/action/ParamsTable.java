@@ -2,6 +2,7 @@ package net.simblo.base.action;
 
 import java.io.Serializable;
 import java.util.HashMap;
+import java.util.Set;
 
 import net.simblo.util.StringUtil;
 
@@ -21,6 +22,14 @@ public class ParamsTable implements Serializable {
 	
 	public Object getParameter(String name) {
 		return params.get(name);
+	}
+	
+	public boolean isEmpty() {
+		return params.isEmpty();
+	}
+	
+	public Set keySet() {
+		return params.keySet();
 	}
 
 }

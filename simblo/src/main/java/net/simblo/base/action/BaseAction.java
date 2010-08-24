@@ -1,6 +1,8 @@
 package net.simblo.base.action;
 
 import java.util.Collection;
+import java.util.HashMap;
+import java.util.Map;
 
 import net.simblo.base.vo.ValueObject;
 
@@ -18,14 +20,20 @@ public abstract class BaseAction extends ActionSupport implements Action {
 	 */
 	private static final long serialVersionUID = 1268857716512544533L;
 
+	@SuppressWarnings("rawtypes")
 	private Collection dataList;
+
+	@SuppressWarnings("rawtypes")
+	private Map dataMap = new HashMap();
 
 	private ValueObject vo;
 
+	@SuppressWarnings("rawtypes")
 	public void setDataList(Collection dataList) {
 		this.dataList = dataList;
 	}
 
+	@SuppressWarnings("rawtypes")
 	public Collection getDataList() {
 		return dataList;
 	}
@@ -36,6 +44,16 @@ public abstract class BaseAction extends ActionSupport implements Action {
 
 	public ValueObject getVo() {
 		return vo;
+	}
+
+	@SuppressWarnings("rawtypes")
+	public void setDataMap(Map dataMap) {
+		this.dataMap = dataMap;
+	}
+
+	@SuppressWarnings("rawtypes")
+	public Map getDataMap() {
+		return dataMap;
 	}
 
 }

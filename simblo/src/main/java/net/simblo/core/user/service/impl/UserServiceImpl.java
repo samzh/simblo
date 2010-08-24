@@ -4,8 +4,12 @@ import net.simblo.core.user.dao.UserDAO;
 import net.simblo.core.user.service.UserService;
 import net.simblo.core.user.vo.User;
 
+import org.springframework.beans.factory.annotation.Autowired;
+
 public class UserServiceImpl implements UserService {
 
+	@SuppressWarnings("rawtypes")
+	@Autowired
 	private UserDAO userDAO;
 
 	@Override
