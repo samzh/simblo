@@ -1,16 +1,7 @@
 package net.simblo.core.user.dao;
 
-import net.simblo.base.dao.HibernateBaseDao;
-import net.simblo.core.user.vo.User;
+import net.simblo.base.dao.IGenericDao;
 
-public class UserDAO extends HibernateBaseDao<User> {
-
-	public UserDAO() {
-		super(User.class);
-	}
-
-	public UserDAO(Class<User> clazz) {
-		super(clazz);
-	}
+public interface UserDAO<T> extends IGenericDao<T>{
 
 }

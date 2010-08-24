@@ -1,10 +1,7 @@
 package net.simblo.base.dao;
 
 import java.io.Serializable;
-import java.util.Collection;
 import java.util.List;
-
-import net.simblo.base.action.ParamsTable;
 
 /**
  * 泛型通用DAO接口
@@ -27,7 +24,4 @@ public interface IGenericDao<T> {
 
 	List<T> findList(int pageNo, int pageSize);
 
-	Collection<T> queryByParams(ParamsTable params);
-
-	int getCountOfAll();
 }

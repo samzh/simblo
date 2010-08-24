@@ -113,9 +113,30 @@
   		<scope>compile</scope>
   	</dependency>
   	<dependency>
-  		<groupId>commons-lang</groupId>
-  		<artifactId>commons-lang</artifactId>
-  		<version>20030203.000129</version>
+  		<groupId>org.springframework</groupId>
+  		<artifactId>spring-core</artifactId>
+  		<version>3.0.2.RELEASE</version>
+  		<type>jar</type>
+  		<scope>compile</scope>
+  	</dependency>
+  	<dependency>
+  		<groupId>org.springframework</groupId>
+  		<artifactId>spring-beans</artifactId>
+  		<version>3.0.2.RELEASE</version>
+  		<type>jar</type>
+  		<scope>compile</scope>
+  	</dependency>
+  	<dependency>
+  		<groupId>org.springframework</groupId>
+  		<artifactId>spring-orm</artifactId>
+  		<version>3.0.2.RELEASE</version>
+  		<type>jar</type>
+  		<scope>compile</scope>
+  	</dependency>
+  	<dependency>
+  		<groupId>org.springframework</groupId>
+  		<artifactId>spring-tx</artifactId>
+  		<version>3.0.2.RELEASE</version>
   		<type>jar</type>
   		<scope>compile</scope>
   	</dependency>
