@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<urlrewrite>
+	<rule>
+		<from>^\/(\w+)\/(\w+)\/(\d+)/$</from>
+		<to type="forward">/$1.do?$2=$3</to>
+	</rule>
+</urlrewrite>

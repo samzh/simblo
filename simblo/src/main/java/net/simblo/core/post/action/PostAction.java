@@ -1,5 +1,7 @@
 package net.simblo.core.post.action;
 
+import java.util.Date;
+
 import net.simblo.base.action.BaseAction;
 import net.simblo.core.post.service.PostService;
 import net.simblo.core.post.vo.Post;
@@ -33,10 +35,12 @@ public class PostAction extends BaseAction {
 	}
 
 	@SuppressWarnings("unchecked")
-	@Action(value = "/save", results = { @Result(name = "success", location = "/list", type = "dispatcher"),
+	@Action(value = "/save", results = { @Result(name = "success", location = "/post/list", type = "dispatcher"),
 			@Result(name = "input", location = "/post/new.jsp") })
 	public String doSave() {
 		Post post = (Post) this.getVo();
+		post.setCreated(new Date());
+		post.setUpdated(new Date());
 		try {
 			postService.save(post);
 		} catch (Exception e) {

@@ -11,13 +11,11 @@ import org.slf4j.LoggerFactory;
 @SuppressWarnings("serial")
 public class IndexAction extends BaseAction {
 
-	public IndexAction(ValueObject vo) {
-		super(vo);
+	public IndexAction() {
+		super(new ValueObject());
 	}
 
 	private Logger logger = LoggerFactory.getLogger(IndexAction.class);
-
-	// @SuppressWarnings("unchecked")
 
 	@Action(results = { @Result(name = "success", location = "/input.jsp") })
 	public String doIndex() throws Exception {
