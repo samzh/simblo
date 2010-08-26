@@ -2,10 +2,12 @@ package net.simblo.core.post.service;
 
 import java.util.List;
 
-import net.simblo.core.post.vo.Post;
+import net.simblo.base.service.IService;
 
-public interface PostService {
+public interface PostService<T> extends IService<T> {
 
-	List<Post> listTopPosts(int count);
+	List<T> listTopPosts(int count);
+
+	List<T> listAll();
 
 }
