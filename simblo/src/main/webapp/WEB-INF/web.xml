@@ -9,108 +9,76 @@
 		<session-timeout>30</session-timeout>
 	</session-config>
 
-	<!-- currently the W3C havent settled on a media type for WSDL;
-		http://www.w3.org/TR/2003/WD-wsdl12-20030303/#ietf-draft
-		for now we go with the basic 'it's XML' response -->
-	<mime-mapping>
-		<extension>wsdl</extension>
-		<mime-type>text/xml</mime-type>
-	</mime-mapping>
-
-	<mime-mapping>
-		<extension>xsd</extension>
-		<mime-type>text/xml</mime-type>
-	</mime-mapping>
-
-	<mime-mapping>
-		<extension>jad</extension>
-		<mime-type>text/vnd.sun.j2me.app-descriptor</mime-type>
-	</mime-mapping>
-
-	<mime-mapping>
-		<extension>jar</extension>
-		<mime-type>application/java-archive</mime-type>
-	</mime-mapping>
-
 	<welcome-file-list>
 		<welcome-file>index.jsp</welcome-file>
 		<welcome-file>default.jsp</welcome-file>
 		<welcome-file>index.html</welcome-file>
 	</welcome-file-list>
 
-	
-	<taglib>
-		<taglib-uri>http://java.sun.com/jstl/core</taglib-uri>
-		<taglib-location>/WEB-INF/c-1_0.tld</taglib-location>
-	</taglib>
-	<taglib>
-		<taglib-uri>http://java.sun.com/jstl/core_rt</taglib-uri>
-		<taglib-location>/WEB-INF/c-1_0-rt.tld</taglib-location>
-	</taglib>
-	<taglib>
-		<taglib-uri>http://java.sun.com/jstl/fmt</taglib-uri>
-		<taglib-location>/WEB-INF/fmt-1_0.tld</taglib-location>
-	</taglib>
-	<taglib>
-		<taglib-uri>http://java.sun.com/jstl/fmt_rt</taglib-uri>
-		<taglib-location>/WEB-INF/fmt-1_0-rt.tld</taglib-location>
-	</taglib>
-	
 	<context-param>
 		<param-name>contextConfigLocation</param-name>
 		<param-value>
 			/WEB-INF/applicationContext.xml
 		</param-value>
 	</context-param>
-	
-	<filter>  
-        <filter-name>UrlRewriteFilter</filter-name>  
-        <filter-class>  
-            org.tuckey.web.filters.urlrewrite.UrlRewriteFilter   
-        </filter-class>  
-        <init-param>  
-            <param-name>logLevel</param-name>  
-            <param-value>WARN</param-value>  
-        </init-param>  
-    </filter>  
-    
-    <filter-mapping>
-    	<filter-name>UrlRewriteFilter</filter-name>
-    	<url-pattern>/*</url-pattern>
-    	<dispatcher>REQUEST</dispatcher>
-    	<dispatcher>FORWARD</dispatcher>
-    </filter-mapping>
-	
-	
-	<!-- Fitler for OpenSessionInView -->
-	<filter>
-        <filter-name>Spring OpenSessionInViewFilter</filter-name>
-        <filter-class>
-            org.springframework.orm.hibernate3.support.OpenSessionInViewFilter
-        </filter-class>
-    </filter>
 
-    <filter-mapping>
-        <filter-name>Spring OpenSessionInViewFilter</filter-name>
-        <url-pattern>/*</url-pattern>
-    </filter-mapping>
-	
 	<filter>
-        <filter-name>struts2</filter-name>
-        <filter-class>
-            org.apache.struts2.dispatcher.FilterDispatcher
+		<filter-name>UrlRewriteFilter</filter-name>
+		<filter-class>
+			org.tuckey.web.filters.urlrewrite.UrlRewriteFilter   
         </filter-class>
-        <init-param>
-        	<param-name>actionPackages</param-name>
-        	<param-value>cn.mop4j.base.action.BaseAction</param-value>
-        </init-param>
-    </filter>
+		<init-param>
+			<param-name>logLevel</param-name>
+			<param-value>INFO</param-value>
+		</init-param>
+	</filter>
 
-    <filter-mapping>
-        <filter-name>struts2</filter-name>
-        <url-pattern>/*</url-pattern>
-    </filter-mapping>
-	
+	<filter-mapping>
+		<filter-name>UrlRewriteFilter</filter-name>
+		<url-pattern>/*</url-pattern>
+		<dispatcher>REQUEST</dispatcher>
+		<dispatcher>FORWARD</dispatcher>
+	</filter-mapping>
+
+	<!-- Fitler for OpenEntityManagerInViewFilter -->
+	<filter>
+		<filter-name>OpenEntityManagerInViewFilter</filter-name>
+		<filter-class>
+			org.springframework.orm.jpa.support.OpenEntityManagerInViewFilter
+        </filter-class>
+	</filter>
+
+	<filter-mapping>
+		<filter-name>OpenEntityManagerInViewFilter</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+
+	<filter>
+		<filter-name>struts2</filter-name>
+		<filter-class>
+			org.apache.struts2.dispatcher.FilterDispatcher
+        </filter-class>
+		<init-param>
+			<param-name>actionPackages</param-name>
+			<param-value>net.simblo</param-value>
+		</init-param>
+	</filter>
+
+	<filter-mapping>
+		<filter-name>struts2</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+
+	<filter>
+		<filter-name>struts-cleanup</filter-name>
+		<filter-class>org.apache.struts2.dispatcher.ActionContextCleanUp</filter-class>
+	</filter>
+
+	<filter-mapping>
+		<filter-name>struts-cleanup</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+
 	<listener>
 		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
 	</listener>

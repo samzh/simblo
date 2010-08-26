@@ -20,13 +20,17 @@ public abstract class BaseAction extends ActionSupport implements Action {
 	 */
 	private static final long serialVersionUID = 1268857716512544533L;
 
+	private ValueObject vo;
+
+	public BaseAction(ValueObject vo) {
+		this.vo = vo;
+	}
+
 	@SuppressWarnings("rawtypes")
 	private Collection dataList;
 
 	@SuppressWarnings("rawtypes")
 	private Map dataMap = new HashMap();
-
-	private ValueObject vo;
 
 	@SuppressWarnings("rawtypes")
 	public void setDataList(Collection dataList) {

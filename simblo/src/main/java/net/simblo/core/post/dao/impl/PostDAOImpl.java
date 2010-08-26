@@ -1,11 +1,15 @@
 package net.simblo.core.post.dao.impl;
 
-import net.simblo.base.dao.HibernateBaseDao;
+import org.springframework.stereotype.Repository;
+
+import net.simblo.base.dao.BaseDao;
 import net.simblo.core.post.dao.PostDAO;
 import net.simblo.core.post.vo.Post;
 
-public class PostDAOImpl extends HibernateBaseDao<Post> implements PostDAO {
-	
+@SuppressWarnings("rawtypes")
+@Repository
+public class PostDAOImpl extends BaseDao implements PostDAO {
+
 	public PostDAOImpl() {
 		super(Post.class);
 	}

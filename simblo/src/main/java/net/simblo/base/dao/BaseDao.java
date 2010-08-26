@@ -6,8 +6,11 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
+import org.springframework.stereotype.Repository;
+
 import net.simblo.base.vo.ValueObject;
 
+@Repository
 public class BaseDao<T> implements IDao, IGenericDao<T> {
 
 	private Class<? extends ValueObject> clazz;
@@ -54,13 +57,13 @@ public class BaseDao<T> implements IDao, IGenericDao<T> {
 	@SuppressWarnings("unchecked")
 	@Override
 	public List<T> findAll() {
-		return em.createNativeQuery("select t from " + this.clazz.getName() + " t", clazz).getResultList();
+		return em.createQuery("select t from " + clazz.getSimpleName() + " t").getResultList();
 	}
 
 	@SuppressWarnings("unchecked")
 	@Override
 	public List<T> findList(int pageNo, int pageSize) {
-		return em.createNativeQuery("select t from " + this.clazz.getName() + " t", clazz)
+		return em.createQuery("select t from " + this.clazz.getName() + " t")
 				.setFirstResult((pageNo - 1) * pageSize).setMaxResults(pageSize).getResultList();
 	}
 
