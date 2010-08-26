@@ -9,7 +9,7 @@
 <title>Create a new Post</title>
 </head>
 <body>
-<s:form action="post/save" method="post">
+<s:form action="save" method="post">
 帖子标题：
 <s:textfield name="vo.title" />
 帖子内容：

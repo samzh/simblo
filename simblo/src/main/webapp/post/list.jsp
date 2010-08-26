@@ -11,13 +11,13 @@
 <body>
 <s:if test="dataList.size > 0">
 	<s:iterator value="dataList" id="vo" status="dl">
-		<s:property value="#dl.count" />,<s:property value="#vo.title" /> <br/>
+		[<a href="<s:url value='delete'><s:param name='id' value='#vo.id' /></s:url>">x</a>]<s:property value="#dl.count" />,<s:property value="#vo.title" /> <br/>
 	</s:iterator>
 </s:if>
 <s:else>
 	<h2>目前没有任何帖子</h2>
 </s:else>
 <br/>
-<a href="<s:url value='/post/new'/>" target="contentright">新建主题</a>
+<a href="<s:url value='new'/>">新建主题</a>
 </body>
 </html>
