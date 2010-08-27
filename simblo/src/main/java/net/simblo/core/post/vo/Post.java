@@ -1,11 +1,15 @@
 package net.simblo.core.post.vo;
 
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import net.simblo.base.vo.ValueObject;
+import net.simblo.core.comment.vo.Comment;
 import net.simblo.core.user.vo.User;
 
 @Entity
@@ -17,6 +21,8 @@ public class Post extends ValueObject {
 	private String content;
 
 	private User author;
+
+	private List<Comment> comment;
 
 	@Column(name = "title")
 	public String getTitle() {
@@ -52,6 +58,15 @@ public class Post extends ValueObject {
 
 	public void setClosed(boolean closed) {
 		this.closed = closed;
+	}
+
+	public void setComment(List<Comment> comment) {
+		this.comment = comment;
+	}
+
+	@OneToMany(targetEntity = Comment.class)
+	public List<Comment> getComment() {
+		return comment;
 	}
 
 	private boolean closed;
