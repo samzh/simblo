@@ -3,5 +3,7 @@
 	version="1.0">
 	<persistence-unit name="jpaUnit">
 	 	<class>net.simblo.core.user.vo.User</class>
+	 	<class>net.simblo.core.post.vo.Post</class>
+	 	<class>net.simblo.core.comment.vo.Comment</class>
 	</persistence-unit>
 </persistence>

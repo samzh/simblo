@@ -2,11 +2,12 @@ package net.simblo.core.comment.vo;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.OneToOne;
+import javax.persistence.Lob;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import net.simblo.base.vo.ValueObject;
-import net.simblo.core.user.vo.User;
+import net.simblo.core.post.vo.Post;
 
 @Entity
 @Table(name = "si_comment")
@@ -17,15 +18,18 @@ public class Comment extends ValueObject {
 
 	private String title;
 
-	private User author;
+	private String authorName;
 
 	private String content;
+
+	private Post post;
 
 	public void setContent(String content) {
 		this.content = content;
 	}
 
-	@Column(name = "content")
+	@Lob
+	@Column(name = "content", length = 500000)
 	public String getContent() {
 		return content;
 	}
@@ -39,13 +43,22 @@ public class Comment extends ValueObject {
 		return title;
 	}
 
-	public void setAuthor(User author) {
-		this.author = author;
+	public void setPost(Post post) {
+		this.post = post;
 	}
 
-	@OneToOne(targetEntity = User.class)
-	public User getAuthor() {
-		return author;
+	@ManyToOne(targetEntity = Post.class)
+	public Post getPost() {
+		return post;
+	}
+
+	public void setAuthorName(String authorName) {
+		this.authorName = authorName;
+	}
+
+	@Column(name = "author_name")
+	public String getAuthorName() {
+		return authorName;
 	}
 
 }
