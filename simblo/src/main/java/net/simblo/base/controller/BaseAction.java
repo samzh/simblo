@@ -1,4 +1,4 @@
-package net.simblo.base.action;
+package net.simblo.base.controller;
 
 import java.util.Collection;
 import java.util.HashMap;
@@ -6,14 +6,11 @@ import java.util.Map;
 
 import net.simblo.base.vo.ValueObject;
 
-import com.opensymphony.xwork2.Action;
-import com.opensymphony.xwork2.ActionSupport;
-
 /**
  * @author Sam
  * 
  */
-public abstract class BaseAction extends ActionSupport implements Action {
+public abstract class BaseAction {
 
 	/**
 	 * 

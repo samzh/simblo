@@ -29,30 +29,9 @@
   		<scope>compile</scope>
   	</dependency>
   	<dependency>
-  		<groupId>org.tuckey</groupId>
-  		<artifactId>urlrewritefilter</artifactId>
-  		<version>3.1.0</version>
-  		<type>jar</type>
-  		<scope>compile</scope>
-  	</dependency>
-  	<dependency>
   		<groupId>commons-lang</groupId>
   		<artifactId>commons-lang</artifactId>
   		<version>2.5</version>
-  		<type>jar</type>
-  		<scope>compile</scope>
-  	</dependency>
-  	<dependency>
-  		<groupId>org.apache.struts</groupId>
-  		<artifactId>struts2-core</artifactId>
-  		<version>2.1.8.1</version>
-  		<type>jar</type>
-  		<scope>compile</scope>
-  	</dependency>
-  	<dependency>
-  		<groupId>org.apache.struts</groupId>
-  		<artifactId>struts2-convention-plugin</artifactId>
-  		<version>2.1.8.1</version>
   		<type>jar</type>
   		<scope>compile</scope>
   	</dependency>
@@ -141,9 +120,9 @@
   		<scope>compile</scope>
   	</dependency>
   	<dependency>
-  		<groupId>org.apache.struts</groupId>
-  		<artifactId>struts2-spring-plugin</artifactId>
-  		<version>2.1.8.1</version>
+  		<groupId>org.springframework</groupId>
+  		<artifactId>spring-webmvc</artifactId>
+  		<version>3.0.2.RELEASE</version>
   		<type>jar</type>
   		<scope>compile</scope>
   	</dependency>

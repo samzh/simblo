@@ -2,7 +2,7 @@ package net.simblo.util.hibernate;
 
 import java.util.Iterator;
 
-import net.simblo.base.action.ParamsTable;
+import net.simblo.base.controller.ParamsTable;
 import net.simblo.util.StringUtil;
 
 /**
