@@ -10,15 +10,13 @@ import javax.persistence.MappedSuperclass;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
-import org.hibernate.annotations.GenericGenerator;
-
 @MappedSuperclass
 /**
  * VO类超类，拥有ValueObject的基本属性
  */
 public class ValueObject implements IValueObject {
 
-	private String id;
+	private long id;
 
 	private Date created;
 
@@ -30,9 +28,8 @@ public class ValueObject implements IValueObject {
 	 * @return id;
 	 */
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY, generator = "_ID")
-	@GenericGenerator(name = "_ID", strategy = "uuid")
-	public String getId() {
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	public long getId() {
 		return id;
 	}
 
@@ -41,7 +38,7 @@ public class ValueObject implements IValueObject {
 	 * 
 	 * @param id
 	 */
-	public void setId(String id) {
+	public void setId(long id) {
 		this.id = id;
 	}
 

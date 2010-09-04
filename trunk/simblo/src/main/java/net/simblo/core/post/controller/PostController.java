@@ -5,6 +5,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import net.simblo.base.controller.BaseAction;
 import net.simblo.core.post.service.PostService;
@@ -38,25 +39,25 @@ public class PostController extends BaseAction {
 		Map map = new HashMap();
 		map.put("dataList", postService.listAll());
 
-		return new ModelAndView("list", map);
+		return new ModelAndView("/post/list", map);
 	}
 
 	@RequestMapping("new")
-	public String doNew() {
-		return "new";
+	public ModelAndView doNew(HttpServletRequest request, HttpServletResponse response) {
+		return new ModelAndView("/post/new", "post", new Post());
 	}
 
 	@SuppressWarnings("unchecked")
 	@RequestMapping(method = RequestMethod.POST, value = "save")
-	public ModelAndView doSave() {
-		Post post = (Post) this.getVo();
+	public ModelAndView doSave(HttpServletRequest request, Post post) {
 		post.setCreated(new Date());
 		post.setUpdated(new Date());
+		System.out.println(post.getContent());
 		try {
 			postService.save(post);
 		} catch (Exception e) {
 			log.info("What the hell! some troubles in posting! {}", e);
-			return new ModelAndView("new");
+			return new ModelAndView("/post/new");
 		}
 		return new ModelAndView("redirect:/post/list");
 	}
