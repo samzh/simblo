@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<%@ taglib prefix="s" uri="/struts-tags"%>
+	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jstl/core" prefix="c"%>
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -9,12 +10,12 @@
 <title>Create a new Post</title>
 </head>
 <body>
-<s:form action="save" method="post">
+<form:form action="save" modelAttribute="post">
 帖子标题：
-<s:textfield name="vo.title" />
+<form:input path="title" />
 帖子内容：
-<s:textarea name="vo.content" rows="15" cols="40"></s:textarea>
-	<s:submit value="提交" />
-</s:form>
+<form:textarea path="content" rows="15" cols="40" />
+<input type="submit" name="submit" value="提交" />
+</form:form>
 </body>
 </html>

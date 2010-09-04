@@ -4,9 +4,9 @@ import java.util.Date;
 
 public interface IValueObject {
 	
-	String getId();
+	long getId();
 	
-	void setId(String id);
+	void setId(long id);
 	
 	Date getCreated();
 	
