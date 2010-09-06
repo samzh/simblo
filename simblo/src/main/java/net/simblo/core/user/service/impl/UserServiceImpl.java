@@ -30,7 +30,7 @@ public class UserServiceImpl<User> implements UserService<User> {
 
 	@SuppressWarnings("unchecked")
 	@Override
-	public User find(String id) {
+	public User find(long id) {
 
 		return (User) userDAO.get(id);
 	}

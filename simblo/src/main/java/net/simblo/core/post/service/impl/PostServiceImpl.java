@@ -32,7 +32,7 @@ public class PostServiceImpl<Post> implements PostService<Post> {
 
 	@SuppressWarnings("unchecked")
 	@Override
-	public Post find(String id) {
+	public Post find(long id) {
 		return (Post) postDAO.get(id);
 	}
 

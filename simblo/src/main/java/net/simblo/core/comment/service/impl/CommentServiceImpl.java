@@ -34,7 +34,7 @@ public class CommentServiceImpl<Comment> implements CommentService<Comment> {
 
 	@SuppressWarnings("unchecked")
 	@Override
-	public Comment find(String id) {
+	public Comment find(long id) {
 		
 		return (Comment)commentDAO.get(id);
 	}

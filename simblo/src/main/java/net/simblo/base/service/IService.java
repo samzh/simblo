@@ -8,7 +8,7 @@ public interface IService<T> {
 
 	void delete(T t);
 
-	T find(String id);
+	T find(long id);
 
 	List<T> findAll();
 
