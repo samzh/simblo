@@ -15,6 +15,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
@@ -38,8 +39,19 @@ public class PostController extends BaseAction {
 	public ModelAndView doListAll() {
 		Map map = new HashMap();
 		map.put("dataList", postService.listAll());
-
 		return new ModelAndView("/post/list", map);
+	}
+
+	@RequestMapping(value = "show/{id}", method = RequestMethod.GET)
+	public ModelAndView doShow(@PathVariable long id) {
+		Post post = (Post) postService.find(id);
+		ModelAndView mav = new ModelAndView();
+		mav.setViewName("/post/show");
+		if (post != null) {
+			mav.addObject("content", post);
+			return mav;
+		}
+		return mav;
 	}
 
 	@RequestMapping("new")
@@ -63,18 +75,15 @@ public class PostController extends BaseAction {
 	}
 
 	@SuppressWarnings("unchecked")
-	@RequestMapping("delete")
-	public String doDelete(HttpServletRequest request) {
-		String id = request.getParameter("id");
-		if (id != null) {
-			Post post = (Post) postService.find(id);
-			try {
-				postService.delete(post);
-			} catch (Exception e) {
-				e.printStackTrace();
-				log.error("删除出错: {}", e);
-				return "redirect:/post/list";
-			}
+	@RequestMapping(value = "delete/{id}", method = RequestMethod.GET)
+	public String doDelete(@PathVariable long id) {
+		Post post = (Post) postService.find(id);
+		try {
+			postService.delete(post);
+		} catch (Exception e) {
+			e.printStackTrace();
+			log.error("删除出错: {}", e);
+			return "redirect:/post/list";
 		}
 		return "redirect:/post/list";
 	}
