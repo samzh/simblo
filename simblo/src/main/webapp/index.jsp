@@ -5,10 +5,10 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-<meta http-equiv="Refresh" content="0; url=index" /> 
+<meta http-equiv="Refresh" content="2; url=index" /> 
 <title>Simblo!</title>
 </head>
 <body>
-
+<h1>111111111111</h1>
 </body>
 </html>
