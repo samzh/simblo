@@ -12,10 +12,29 @@ CKEDITOR.editorConfig = function(config) {
 	// ];
 	//	
 	// config.extraPlugins='syntaxhighlight';
+	
+	config.extraPlugins = 'syntaxhighlight';
+	
 	config.filebrowserUploadUrl = '../upload/File';
 	config.filebrowserImageUploadUrl = '../upload/Image';
 	config.filebrowserFlashUploadUrl = '../upload/Flash';
 	// 图片浏览配置
 	config.filebrowserImageBrowseUrl = '../browse/image';
+	
+	config.toolbar = 'SimbloToolBar';
 
+	config.toolbar_SimbloToolBar =
+	[
+	['Source', 'syntaxhighlight', 'Preview'],
+	['Cut','Copy','Paste','PasteText','PasteFromWord','-','Scayt'],
+	['Undo','Redo','-','Find','Replace','-','SelectAll','RemoveFormat'],
+	['Image','Flash','Table','HorizontalRule','Smiley','SpecialChar','PageBreak'],
+	'/',
+	['Styles','Format'],
+	['Bold','Italic','Strike'],
+	['NumberedList','BulletedList','-','Outdent','Indent','Blockquote'],
+	['Link','Unlink','Anchor'],
+	['Maximize']
+	];
 };
+
