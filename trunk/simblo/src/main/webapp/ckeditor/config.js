@@ -8,8 +8,14 @@ CKEDITOR.editorConfig = function(config) {
 	// config.language = 'fr';
 	// config.uiColor = '#AADC6E';
 
-	config.toolbar = [ [ 'Source', '-', 'Bold', 'Italic', 'syntaxhighlight' ] ];
-	
-	config.extraPlugins='syntaxhighlight';
+	// config.toolbar = [ [ 'Source', '-', 'Bold', 'Italic', 'syntaxhighlight' ]
+	// ];
+	//	
+	// config.extraPlugins='syntaxhighlight';
+	config.filebrowserUploadUrl = '../upload/File';
+	config.filebrowserImageUploadUrl = '../upload/Image';
+	config.filebrowserFlashUploadUrl = '../upload/Flash';
+	// 图片浏览配置
+	config.filebrowserImageBrowseUrl = '../browse/image';
 
 };
