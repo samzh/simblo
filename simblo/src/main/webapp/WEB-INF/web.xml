@@ -30,8 +30,10 @@
 		<url-pattern>*.jpg</url-pattern>
 		<url-pattern>*.gif</url-pattern>
 		<url-pattern>*.png</url-pattern>
+		<url-pattern>*.swf</url-pattern>
+		<url-pattern>*.bmp</url-pattern>
 	</servlet-mapping>
-	
+
 	<welcome-file-list>
 		<welcome-file>index.jsp</welcome-file>
 		<welcome-file>default.jsp</welcome-file>

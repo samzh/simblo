@@ -21,6 +21,8 @@ public class Post extends ValueObject {
 
 	private String content;
 
+	private String description;
+
 	private User author;
 
 	private List<Comment> comment;
@@ -35,7 +37,7 @@ public class Post extends ValueObject {
 	}
 
 	@Lob
-	@Column(name = "content", length= 500000)
+	@Column(name = "content", length = 500000)
 	public String getContent() {
 		return content;
 	}
@@ -69,6 +71,15 @@ public class Post extends ValueObject {
 	@OneToMany(targetEntity = Comment.class)
 	public List<Comment> getComment() {
 		return comment;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
+	}
+
+	@Column(name = "description", length = 255)
+	public String getDescription() {
+		return description;
 	}
 
 	private boolean closed;
