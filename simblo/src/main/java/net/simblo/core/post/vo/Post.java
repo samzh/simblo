@@ -10,6 +10,7 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import net.simblo.base.vo.ValueObject;
+import net.simblo.core.category.vo.Category;
 import net.simblo.core.comment.vo.Comment;
 import net.simblo.core.user.vo.User;
 
@@ -26,6 +27,10 @@ public class Post extends ValueObject {
 	private User author;
 
 	private List<Comment> comment;
+
+	private boolean closed;
+
+	private Category category;
 
 	@Column(name = "title")
 	public String getTitle() {
@@ -82,6 +87,13 @@ public class Post extends ValueObject {
 		return description;
 	}
 
-	private boolean closed;
+	public void setCategory(Category category) {
+		this.category = category;
+	}
+
+	@OneToOne(targetEntity = Category.class)
+	public Category getCategory() {
+		return category;
+	}
 
 }

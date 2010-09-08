@@ -60,14 +60,15 @@
                     	<fieldset>
                         	<p><label>文章标题:</label><form:input cssClass="text-long" path="title" /></p>
                             <p><label>所属分类:</label>
-                            <select>
-                            	<option>Select one</option>
-                            	<option>Select two</option>
-                            	<option>Select tree</option>
-                            	<option>Select one</option>
-                            	<option>Select two</option>
-                            	<option>Select tree</option>
-                            </select>
+                            <c:choose>
+                            	<c:when test="${fn:length(categoryList) > 0 }">
+                            	<select name="categoryselect" id="categoryselect">
+                            		<c:forEach items="${categoryList}" var="category">
+                            			<option value="${category.id}">${category.name}</option>
+                            		</c:forEach>
+                            	</select>
+                            	</c:when>
+                            </c:choose>
                             </p>
                         	<p><label>文章内容:</label>
                         	<form:textarea path="content" rows="15" cols="40" />
@@ -88,7 +89,7 @@
         </div>	
         <!-- // #containerHolder -->
         
-        <p id="footer">Feel free to use and customize it. <a href="http://www.perspectived.com">Credit is appreciated.</a></p>
+        <p id="footer">&copy; 2010 <a href="http://www.perspectived.com">samzh.net</a> <b>Simblo!</b></p>
     </div>
     <!-- // #wrapper -->
 </body>
