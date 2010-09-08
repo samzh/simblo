@@ -2,12 +2,14 @@ package net.simblo.core.post.controller;
 
 import java.util.Date;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 
 import net.simblo.base.controller.BaseAction;
+import net.simblo.core.category.service.CategoryService;
+import net.simblo.core.category.vo.Category;
 import net.simblo.core.post.service.PostService;
 import net.simblo.core.post.vo.Post;
 
@@ -15,6 +17,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -26,9 +29,11 @@ public class PostController extends BaseAction {
 
 	private static Logger log = LoggerFactory.getLogger(PostController.class);
 
-	@SuppressWarnings("rawtypes")
 	@Autowired
-	private PostService postService;
+	private PostService<Post> postService;
+
+	@Autowired
+	private CategoryService<Category> categoryService;
 
 	public PostController() {
 		super(new Post());
@@ -55,16 +60,24 @@ public class PostController extends BaseAction {
 	}
 
 	@RequestMapping("new")
-	public ModelAndView doNew(HttpServletRequest request, HttpServletResponse response) {
-		return new ModelAndView("/post/content", "post", new Post());
+	public ModelAndView doNew() {
+		List<Category> categoryList = categoryService.findAll();
+		ModelMap map = new ModelMap();
+		map.put("categoryList", categoryList);
+		map.put("post", new Post());
+		return new ModelAndView("/post/content", map);
 	}
 
-	@SuppressWarnings("unchecked")
 	@RequestMapping(method = RequestMethod.POST, value = "save")
 	public ModelAndView doSave(HttpServletRequest request, Post post) {
 		post.setCreated(new Date());
 		post.setUpdated(new Date());
 		System.out.println(post.getContent());
+		String categoryId = request.getParameter("categoryselect");
+		if (categoryId != null) {
+			Category category = categoryService.find(Long.parseLong(categoryId));
+			post.setCategory(category);
+		}
 		try {
 			postService.save(post);
 		} catch (Exception e) {
@@ -74,7 +87,6 @@ public class PostController extends BaseAction {
 		return new ModelAndView("redirect:/post/list");
 	}
 
-	@SuppressWarnings("unchecked")
 	@RequestMapping(value = "delete/{id}", method = RequestMethod.GET)
 	public String doDelete(@PathVariable long id) {
 		Post post = (Post) postService.find(id);
