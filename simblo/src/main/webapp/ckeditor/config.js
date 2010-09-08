@@ -21,12 +21,16 @@ CKEDITOR.editorConfig = function(config) {
 	// 图片浏览配置
 	config.filebrowserImageBrowseUrl = '../browse/image';
 	
+	config.font_defaultLabel = '微软雅黑';
+	
+	config.fontSize_defaultLabel = '14px';
+
 	config.toolbar = 'SimbloToolBar';
 
 	config.toolbar_SimbloToolBar =
 	[
 	['Source', 'syntaxhighlight', 'Preview'],
-	['Cut','Copy','Paste','PasteText','PasteFromWord','-','Scayt'],
+	['Cut','Copy','Paste','PasteText','PasteFromWord'],
 	['Undo','Redo','-','Find','Replace','-','SelectAll','RemoveFormat'],
 	['Image','Flash','Table','HorizontalRule','Smiley','SpecialChar','PageBreak'],
 	'/',
@@ -36,5 +40,7 @@ CKEDITOR.editorConfig = function(config) {
 	['Link','Unlink','Anchor'],
 	['Maximize']
 	];
+
+
 };
 
