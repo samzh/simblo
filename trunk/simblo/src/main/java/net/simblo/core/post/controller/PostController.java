@@ -56,7 +56,7 @@ public class PostController extends BaseAction {
 
 	@RequestMapping("new")
 	public ModelAndView doNew(HttpServletRequest request, HttpServletResponse response) {
-		return new ModelAndView("/post/new", "post", new Post());
+		return new ModelAndView("/post/content", "post", new Post());
 	}
 
 	@SuppressWarnings("unchecked")
@@ -69,7 +69,7 @@ public class PostController extends BaseAction {
 			postService.save(post);
 		} catch (Exception e) {
 			log.info("What the hell! some troubles in posting! {}", e);
-			return new ModelAndView("/post/new");
+			return new ModelAndView("/post/content");
 		}
 		return new ModelAndView("redirect:/post/list");
 	}

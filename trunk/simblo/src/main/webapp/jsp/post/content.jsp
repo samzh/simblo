@@ -1,24 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
 <%@include file="../common/taglib.jsp" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <title>Simblo! - 管理后台</title>
 
 <!-- CSS -->
-<link href="css/transdmin.css" rel="stylesheet" type="text/css" media="screen" />
+<link href="<c:url value='/css/transdmin.css'></c:url>" rel="stylesheet" type="text/css" media="screen" />
 <!--[if IE 6]><link rel="stylesheet" type="text/css" media="screen" href="css/ie6.css" /><![endif]-->
 <!--[if IE 7]><link rel="stylesheet" type="text/css" media="screen" href="css/ie7.css" /><![endif]-->
 
-<!-- JavaScripts-->
-<!--<script type="text/javascript" src="style/js/jquery.js"></script>
-<script type="text/javascript" src="style/js/jNice.js"></script>-->
+<script src="<c:url value="../ckeditor/ckeditor.js" />"></script>
+<script type="text/javasctipt">
+	function doSubmit() {
+		document.forms[0].content.value = CKEDITOR.instances.content.getData();
+		forms[0].submit(); 
+	}
+</script>
 </head>
-
 <body>
-	<div id="wrapper">
+<div id="wrapper">
     	<!-- h1 tag stays for the logo, you can use the a tag for linking the index page -->
     	<h1><a href="#"><span>Simblo!</span></a></h1>
         
@@ -51,35 +55,11 @@
                 <h2><a href="#">Dashboard</a> &raquo; <a href="#" class="active">Print resources</a></h2>
                 
                 <div id="main">
-                	<form action="" class="jNice">
-					<h3>Sample section</h3>
-                    	<table cellpadding="0" cellspacing="0">
-							<tr>
-                                <td>Vivamus rutrum nibh in felis tristique vulputate</td>
-                                <td class="action"><a href="#" class="view">View</a><a href="#" class="edit">Edit</a><a href="#" class="delete">Delete</a></td>
-                            </tr>                        
-							<tr class="odd">
-                                <td>Duis adipiscing lorem iaculis nunc</td>
-                                <td class="action"><a href="#" class="view">View</a><a href="#" class="edit">Edit</a><a href="#" class="delete">Delete</a></td>
-                            </tr>                        
-							<tr>
-                                <td>Donec sit amet nisi ac magna varius tempus</td>
-                                <td class="action"><a href="#" class="view">View</a><a href="#" class="edit">Edit</a><a href="#" class="delete">Delete</a></td>
-                            </tr>                        
-							<tr class="odd">
-                                <td>Duis ultricies laoreet felis</td>
-                                <td class="action"><a href="#" class="view">View</a><a href="#" class="edit">Edit</a><a href="#" class="delete">Delete</a></td>
-                            </tr>                        
-							<tr>
-                                <td>Vivamus rutrum nibh in felis tristique vulputate</td>
-                                <td class="action"><a href="#" class="view">View</a><a href="#" class="edit">Edit</a><a href="#" class="delete">Delete</a></td>
-                            </tr>                        
-                        </table>
-					<h3>Another section</h3>
+                	<form:form action="save" cssClass="jNice" modelAttribute="post">
+					<h3>文章内容</h3>
                     	<fieldset>
-                        	<p><label>Sample label:</label><input type="text" class="text-long" /></p>
-                        	<p><label>Sample label:</label><input type="text" class="text-medium" /><input type="text" class="text-small" /><input type="text" class="text-small" /></p>
-                            <p><label>Sample label:</label>
+                        	<p><label>文章标题:</label><form:input cssClass="text-long" path="title" /></p>
+                            <p><label>所属分类:</label>
                             <select>
                             	<option>Select one</option>
                             	<option>Select two</option>
@@ -89,10 +69,16 @@
                             	<option>Select tree</option>
                             </select>
                             </p>
-                        	<p><label>Sample label:</label><textarea rows="1" cols="1"></textarea></p>
-                            <input type="submit" value="Submit Query" />
+                        	<p><label>文章内容:</label>
+                        	<form:textarea path="content" rows="15" cols="40" />
+								<script type="text/javascript">
+									CKEDITOR.replace('content', {
+										customConfig : 'config.js'
+									});
+								</script></p>
+                            <button class="button-submit" onclick="doSubmit()">提交</button>
                         </fieldset>
-                    </form>
+                    </form:form>
                 </div>
                 <!-- // #main -->
                 
