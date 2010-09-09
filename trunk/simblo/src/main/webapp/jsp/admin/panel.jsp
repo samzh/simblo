@@ -102,7 +102,7 @@
         </div>	
         <!-- // #containerHolder -->
         
-        <p id="footer">Feel free to use and customize it. <a href="http://www.perspectived.com">Credit is appreciated.</a></p>
+        <%@include file="../layouts/footer.jsp" %>
     </div>
     <!-- // #wrapper -->
 </body>

@@ -1,0 +1,1 @@
+<div id="footer">&copy; 2010 <a href="http://www.samzh.net">samzh.net</a> All rights Reserved. Project <b>Simblo!</b></div>
