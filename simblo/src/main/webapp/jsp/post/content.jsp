@@ -89,7 +89,7 @@
         </div>	
         <!-- // #containerHolder -->
         
-        <p id="footer">&copy; 2010 <a href="http://www.perspectived.com">samzh.net</a> <b>Simblo!</b></p>
+        <p id="footer"><%@include file="../layouts/footer.jsp" %></p>
     </div>
     <!-- // #wrapper -->
 </body>
