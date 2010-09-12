@@ -12,8 +12,10 @@
 
 			<div class="postmetadata"></div>
 			</div>
-			<div class="page_navi pro_next">1.2.3.4.5.6</div>
 		</c:forEach>
+		<div class="page_navi pro_next">
+			<si:pagination totalPage="5" curPage="1" totalCount="${fn:length(postList)}" />
+		</div>
 	</c:when>
 	<c:otherwise>
 		<div class="post">

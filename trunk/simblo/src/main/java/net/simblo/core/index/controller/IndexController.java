@@ -14,6 +14,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -32,12 +33,18 @@ public class IndexController extends BaseAction {
 	@Autowired
 	private CategoryService<Category> categoryService;
 
+	
+	private int pageSize = 5;
+	
 	@RequestMapping(value = "/index")
-	public ModelAndView doIndex() throws Exception {
+	public ModelAndView doIndex(@PathVariable String curPage) throws Exception {
+		if (curPage != null && !curPage.isEmpty()) {
+			
+		}
 
 		ModelMap modelMap = new ModelMap();
 
-		List<Post> postList = postService.findAll();
+		List<Post> postList = postService.listTopPosts(5);
 
 		List<Category> categoryList = categoryService.findAll();
 
