@@ -45,4 +45,10 @@ public class CategoryServiceImpl<Category> implements CategoryService<Category> 
 		return categoryDAO.findAll();
 	}
 
+	@Override
+	public List<Category> findByCount(int count) {
+	
+		return null;
+	}
+
 }

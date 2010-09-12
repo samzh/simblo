@@ -7,5 +7,7 @@ import net.simblo.base.service.IService;
 public interface CategoryService<Category> extends IService<Category> {
 	
 	List<Category> findAll();
+	
+	List<Category> findByCount(int count);
 
 }
