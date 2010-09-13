@@ -44,12 +44,12 @@ public class IndexController extends BaseAction {
 	public ModelAndView doIndex(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		
 		ParameterMap map = (ParameterMap)request.getParameterMap();
-		
+		StringBuffer buffer = new StringBuffer();
+		System.out.println(map.size());
 		for (Iterator iter = map.keySet().iterator();iter.hasNext();) {
 			String key = (String)iter.next();
 			
-			logger.info(key);
-			logger.info((String) map.get(key));
+			buffer.append(key).append(",").append((String) map.get(key)).append("<br/>");
 		}
 		
 		
@@ -66,6 +66,8 @@ public class IndexController extends BaseAction {
 		modelMap.put("postList", postList);
 
 		modelMap.put("categoryList", categoryList);
+		
+		modelMap.put("pars", buffer.toString());
 
 		return new ModelAndView("/index", modelMap);
 	}
