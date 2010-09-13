@@ -16,6 +16,7 @@
 		<div class="page_navi pro_next">
 			<si:pagination totalPage="5" curPage="1" totalCount="${fn:length(postList)}" />
 		</div>
+		<div>${pars}</div>
 	</c:when>
 	<c:otherwise>
 		<div class="post">
