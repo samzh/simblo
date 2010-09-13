@@ -1,5 +1,4 @@
 <configuration>
-    <!--Richard Liu @20091123-->
     <!--控制台日志-->
     <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
         <layout class="ch.qos.logback.classic.PatternLayout">
@@ -10,7 +9,7 @@
         </layout>
     </appender>
     <!--文件日志-->
-    <appender name="FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+    <!--<appender name="FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
         <File>../logs/gpsTiming.log</File>
         <rollingPolicy class="ch.qos.logback.core.rolling.FixedWindowRollingPolicy">
             <FileNamePattern>../logs/gpsTiming.log.%i.bak</FileNamePattern>
@@ -25,13 +24,12 @@
             <Pattern>[%d{yyyy-MM-dd HH:mm:ss.SSS}][%thread][%class->%method#%line][%level]: %msg%n</Pattern>
         </layout>
     </appender>
-    <!--ROOT日志记录器-->
-    <root level="ERROR">
+    --><!--ROOT日志记录器-->
+    <root level="INFO">
         <appender-ref ref="STDOUT"/>
     </root>
-    <!--Richard Liu-->
-    <!--本应用日志配置-->
-    <logger name="cn.eshore.gps" level="INFO" additivity="true"><!--
+  
+    <logger name="net.simblo" level="INFO" additivity="true"><!--
         <appender-ref ref="FILE"/>
     --></logger>
 </configuration>
