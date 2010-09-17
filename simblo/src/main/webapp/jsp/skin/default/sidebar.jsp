@@ -5,11 +5,10 @@
 	<li>
 	<h2>Meta</h2>
 	<ul>
-		<li>注销</li>
-		<li><a href="http://moierby.com/about" title="关于莫矮水北">关于<abbr
-			title="莫矮水北-moierby">莫矮水北</abbr></a></li>
-		<li><a href="http://moierby.com/guestbook" title="留言本">留言本</a></li>
-		<li><a href="http://moierby.com/sitemap" title="网站地图">网站地图</a></li>
+		<li>Log out</li>
+		<li><a href="<c:url value='/about'/>" title="About">About</a></li>
+		<li><a href="<c:url value='/'/>" title="Message">Message</a></li>
+		<li><a href="<c:url value='/sitemap' />" title="Sitemap">Sitemap</a></li>
 	</ul>
 	</li>
 

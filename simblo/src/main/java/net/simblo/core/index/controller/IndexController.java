@@ -1,6 +1,5 @@
 package net.simblo.core.index.controller;
 
-import java.util.Iterator;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -13,7 +12,6 @@ import net.simblo.core.category.vo.Category;
 import net.simblo.core.post.service.PostService;
 import net.simblo.core.post.vo.Post;
 
-import org.apache.catalina.util.ParameterMap;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -37,37 +35,30 @@ public class IndexController extends BaseAction {
 	@Autowired
 	private CategoryService<Category> categoryService;
 
-	
 	private int pageSize = 5;
-	
+
 	@RequestMapping(value = "/index")
 	public ModelAndView doIndex(HttpServletRequest request, HttpServletResponse response) throws Exception {
-		
-		ParameterMap map = (ParameterMap)request.getParameterMap();
-		StringBuffer buffer = new StringBuffer();
-		System.out.println(map.size());
-		for (Iterator iter = map.keySet().iterator();iter.hasNext();) {
-			String key = (String)iter.next();
-			
-			buffer.append(key).append(",").append((String) map.get(key)).append("<br/>");
+
+		String curPageStr = request.getParameter("curpage");
+		int curPage = 1;
+		if (curPageStr != null && !curPageStr.isEmpty()) {
+			try {
+				curPage = Integer.parseInt(curPageStr);
+			} catch (Exception e) {
+				logger.warn("公页参数错误，将采用默认页数: 1");
+			}
 		}
-		
-		
-//		if (curPage != null && !curPage.isEmpty()) {
-//			
-//		}
 
 		ModelMap modelMap = new ModelMap();
 
-		List<Post> postList = postService.listTopPosts(pageSize);
+		List<Post> postList = postService.listTopPosts(curPage, 5);
 
 		List<Category> categoryList = categoryService.findAll();
 
 		modelMap.put("postList", postList);
 
 		modelMap.put("categoryList", categoryList);
-		
-		modelMap.put("pars", buffer.toString());
 
 		return new ModelAndView("/index", modelMap);
 	}
