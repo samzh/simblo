@@ -51,8 +51,7 @@ public class PageTag extends TagSupport {
 		}
 
 		int pages = (Integer.parseInt(totalCount) / Integer.parseInt(pageSize)) + 1;
-		int pageNumber = (Integer.parseInt(totalPage) / Integer.parseInt(pageSize));
-		if (Integer.parseInt(curPage) > pages) {
+		if (Integer.parseInt(curPage) >= pages) {
 			curPage = String.valueOf(pages);
 		}
 		if (Integer.parseInt(curPage) < 1) {
@@ -75,8 +74,8 @@ public class PageTag extends TagSupport {
 			out.print("<a href='index?curpage=1'>[首页]</a>  ");
 			if (Integer.parseInt(curPage) - 1 > 0) {
 				out.print("<a href='index?curpage="
-						+ (((Integer.parseInt(curPage) - 1) == 0) ? curPage : (Integer.parseInt(curPage) - 1))
-						+ "'>[上一页]</a>");
+						+ (((Integer.parseInt(curPage) - 1) == 0) ? curPage : ((Integer.parseInt(curPage) - 1))
+								+ "'>[上一页]</a>"));
 			}
 
 			for (int i = start; i <= end; i++) {
@@ -90,8 +89,8 @@ public class PageTag extends TagSupport {
 
 			if (Integer.parseInt(curPage) + 1 > pages) {
 				out.print("<a href='index?curpage="
-						+ (((Integer.parseInt(curPage) + 1) > pages) ? curPage : (Integer.parseInt(curPage) + 1))
-						+ "'>[下一页]</a> ");
+						+ (((Integer.parseInt(curPage) + 1) > pages) ? curPage : ((Integer.parseInt(curPage) + 1))
+								+ "'>[下一页]</a> "));
 			}
 
 			out.print(" <a href='index?curpage=" + pages + "'>[末页]</a>");

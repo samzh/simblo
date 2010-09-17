@@ -44,8 +44,8 @@ public class PostServiceImpl<Post> implements PostService<Post> {
 
 	@SuppressWarnings("unchecked")
 	@Override
-	public List<Post> listTopPosts(int count) {
-		return postDAO.findList(1, count);
+	public List<Post> listTopPosts(int currpage, int pageSize) {
+		return postDAO.findList(currpage, pageSize);
 	}
 
 	@Override
