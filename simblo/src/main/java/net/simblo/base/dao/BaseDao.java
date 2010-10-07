@@ -66,5 +66,9 @@ public class BaseDao<T> implements IDao, IGenericDao<T> {
 		return em.createQuery("select t from " + this.clazz.getName() + " t")
 				.setFirstResult((pageNo - 1) * pageSize).setMaxResults(pageSize).getResultList();
 	}
+	
+	public long getCount() {
+		return (Long)em.createQuery("select count(*) from " + this.clazz.getSimpleName()).getSingleResult();
+	}
 
 }

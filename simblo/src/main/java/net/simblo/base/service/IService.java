@@ -12,4 +12,6 @@ public interface IService<T> {
 
 	List<T> findAll();
 
+	long getCount();
+
 }

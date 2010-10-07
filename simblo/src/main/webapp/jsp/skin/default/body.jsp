@@ -14,7 +14,7 @@
 			</div>
 		</c:forEach>
 		<div class="page_navi pro_next">
-			<si:pagination curPage="1" totalCount="${fn:length(postList)}" />
+			<si:pagination curPage="1" totalCount="${totalCount}" />
 		</div>
 	</c:when>
 	<c:otherwise>

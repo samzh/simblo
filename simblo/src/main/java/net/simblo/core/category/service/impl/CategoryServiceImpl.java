@@ -51,4 +51,9 @@ public class CategoryServiceImpl<Category> implements CategoryService<Category> 
 		return null;
 	}
 
+	@Override
+	public long getCount() {
+		return categoryDAO.getCount();
+	}
+
 }
