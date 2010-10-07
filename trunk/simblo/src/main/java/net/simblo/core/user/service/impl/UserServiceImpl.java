@@ -47,4 +47,9 @@ public class UserServiceImpl<User> implements UserService<User> {
 		return null;
 	}
 
+	@Override
+	public long getCount() {
+		return userDAO.getCount();
+	}
+
 }

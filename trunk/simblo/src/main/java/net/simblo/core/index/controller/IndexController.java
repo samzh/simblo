@@ -46,17 +46,21 @@ public class IndexController extends BaseAction {
 			try {
 				curPage = Integer.parseInt(curPageStr);
 			} catch (Exception e) {
-				logger.warn("公页参数错误，将采用默认页数: 1");
+				logger.warn("页面参数错误，将使用默认页数: 1");
 			}
 		}
 
 		ModelMap modelMap = new ModelMap();
+		
+		long totalCount = postService.getCount();
 
-		List<Post> postList = postService.listTopPosts(curPage, 5);
+		List<Post> postList = postService.listTopPosts(curPage, pageSize);
 
 		List<Category> categoryList = categoryService.findAll();
 
 		modelMap.put("postList", postList);
+		
+		modelMap.put("totalCount", totalCount);
 
 		modelMap.put("categoryList", categoryList);
 

@@ -46,6 +46,11 @@ public class CommentServiceImpl<Comment> implements CommentService<Comment> {
 		return commentDAO.findAll();
 	}
 
+	@Override
+	public long getCount() {
+		return commentDAO.getCount();
+	}
+
 	
 
 }

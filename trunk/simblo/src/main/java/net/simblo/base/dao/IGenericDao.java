@@ -23,5 +23,7 @@ public interface IGenericDao<T> {
 	List<T> findAll();
 
 	List<T> findList(int pageNo, int pageSize);
+	
+	long getCount();
 
 }

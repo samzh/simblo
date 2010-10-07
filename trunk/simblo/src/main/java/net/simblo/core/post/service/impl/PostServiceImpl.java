@@ -52,5 +52,10 @@ public class PostServiceImpl<Post> implements PostService<Post> {
 	public List<Post> listAll() {
 		return findAll();
 	}
+	
+	@Override
+	public long getCount() {
+		return postDAO.getCount();
+	}
 
 }

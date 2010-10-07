@@ -72,7 +72,7 @@ public class PageTag extends TagSupport {
 		try {
 			out.print("<form action='index'>");
 			out.print("<a href='index?curpage=1'>[首页]</a>  ");
-			if (Integer.parseInt(curPage) - 1 > 0) {
+			if (Integer.parseInt(curPage) - 1 >= 0) {
 				out.print("<a href='index?curpage="
 						+ (((Integer.parseInt(curPage) - 1) == 0) ? curPage : ((Integer.parseInt(curPage) - 1))
 								+ "'>[上一页]</a>"));
@@ -87,7 +87,7 @@ public class PageTag extends TagSupport {
 
 			}
 
-			if (Integer.parseInt(curPage) + 1 > pages) {
+			if (Integer.parseInt(curPage) + 1 <= pages) {
 				out.print("<a href='index?curpage="
 						+ (((Integer.parseInt(curPage) + 1) > pages) ? curPage : ((Integer.parseInt(curPage) + 1))
 								+ "'>[下一页]</a> "));
