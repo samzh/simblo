@@ -30,10 +30,10 @@ public class PostController extends BaseAction {
 	private static Logger log = LoggerFactory.getLogger(PostController.class);
 
 	@Autowired
-	private PostService<Post> postService;
+	private PostService postService;
 
 	@Autowired
-	private CategoryService<Category> categoryService;
+	private CategoryService categoryService;
 
 	public PostController() {
 		super(new Post());

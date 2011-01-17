@@ -269,7 +269,7 @@ public class UploadController {
         // 不含有子文件夹，新建一个，通常系统首次上传会有这个情况  
         File newFile = buildFileBySysTime(path);  
         if (null == newFile) {  
-            logger.error("创建文件夹失败！newFile=" + newFile);  
+            logger.error("创建文件夹失败！newFile=" + path);  
         }  
   
         return newFile;  

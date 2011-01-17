@@ -4,19 +4,18 @@ import java.util.List;
 
 import net.simblo.core.category.dao.CategoryDAO;
 import net.simblo.core.category.service.CategoryService;
+import net.simblo.core.category.vo.Category;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 @Service
-public class CategoryServiceImpl<Category> implements CategoryService<Category> {
+public class CategoryServiceImpl implements CategoryService {
 
-	@SuppressWarnings("rawtypes")
 	@Autowired
-	private CategoryDAO categoryDAO;
+	private CategoryDAO<Category> categoryDAO;
 
-	@SuppressWarnings("unchecked")
 	@Override
 	@Transactional
 	public void save(Category t) {
@@ -24,7 +23,6 @@ public class CategoryServiceImpl<Category> implements CategoryService<Category> 
 
 	}
 
-	@SuppressWarnings("unchecked")
 	@Override
 	@Transactional
 	public void delete(Category t) {
@@ -32,14 +30,12 @@ public class CategoryServiceImpl<Category> implements CategoryService<Category> 
 
 	}
 
-	@SuppressWarnings("unchecked")
 	@Override
 	public Category find(long id) {
 
 		return (Category) categoryDAO.get(id);
 	}
 
-	@SuppressWarnings("unchecked")
 	@Override
 	public List<Category> findAll() {
 		return categoryDAO.findAll();
@@ -47,7 +43,7 @@ public class CategoryServiceImpl<Category> implements CategoryService<Category> 
 
 	@Override
 	public List<Category> findByCount(int count) {
-	
+
 		return null;
 	}
 

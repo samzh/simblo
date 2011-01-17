@@ -5,9 +5,11 @@ import java.lang.reflect.ParameterizedType;
 import java.util.List;
 
 import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
 
 public class HibernateBaseDao<T> extends BaseDao<T> {
 
+	@PersistenceContext
 	private EntityManager em;
 
 	private Class<T> clazz;

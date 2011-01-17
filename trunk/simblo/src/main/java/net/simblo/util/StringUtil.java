@@ -777,34 +777,7 @@ public class StringUtil {
 		return !toGB2312(str).equals(str);
 	}
 
-	/**
-	 * Get the same sub string between two string.
-	 * 
-	 * @param s1
-	 *            The first string.
-	 * @param s2
-	 *            The second string.
-	 * @return The same sub string
-	 */
-	public static String getSameString(String s1, String s2) {
-		String s = "";
-		if (s1 == null || s1.trim().length() <= 0 || s2 == null || s2.trim().length() <= 0)
-			return s;
-
-		int len = s1.length() > s2.length() ? s2.length() : s1.length();
-		System.out.println("len->" + len);
-		char[] c1 = s1.toCharArray();
-		char[] c2 = s2.toCharArray();
-		for (int i = 0; i < len; i++) {
-			if (c1[i] == c2[i]) {
-				s += c1[i];
-				continue;
-			} else {
-				break;
-			}
-		}
-		return s;
-	}
+	
 
 	public static String getFixLengthString(String str, int length) throws Exception { // ***************
 		if (str == null || str.trim().length() < 0)
@@ -829,7 +802,7 @@ public class StringUtil {
 	public static String getBlankString(int count) {
 		String str = "";
 		for (int i = 0; i < count; i++) {
-			str = str + " ";
+			str = str.concat(" ");
 		}
 		return str;
 	}

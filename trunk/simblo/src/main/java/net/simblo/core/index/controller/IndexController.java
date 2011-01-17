@@ -30,10 +30,10 @@ public class IndexController extends BaseAction {
 	private Logger logger = LoggerFactory.getLogger(IndexController.class);
 
 	@Autowired
-	private PostService<Post> postService;
+	private PostService postService;
 
 	@Autowired
-	private CategoryService<Category> categoryService;
+	private CategoryService categoryService;
 
 	private int pageSize = 5;
 
@@ -51,7 +51,7 @@ public class IndexController extends BaseAction {
 		}
 
 		ModelMap modelMap = new ModelMap();
-		
+
 		long totalCount = postService.getCount();
 
 		List<Post> postList = postService.listTopPosts(curPage, pageSize);
@@ -59,7 +59,7 @@ public class IndexController extends BaseAction {
 		List<Category> categoryList = categoryService.findAll();
 
 		modelMap.put("postList", postList);
-		
+
 		modelMap.put("totalCount", totalCount);
 
 		modelMap.put("categoryList", categoryList);
