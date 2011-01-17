@@ -4,38 +4,34 @@ import java.util.List;
 
 import net.simblo.core.user.dao.UserDAO;
 import net.simblo.core.user.service.UserService;
+import net.simblo.core.user.vo.User;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 
-public class UserServiceImpl<User> implements UserService<User> {
+public class UserServiceImpl implements UserService {
 
-	@SuppressWarnings("rawtypes")
 	@Autowired
-	private UserDAO userDAO;
+	private UserDAO<User> userDAO;
 
-	@SuppressWarnings("unchecked")
 	@Override
 	@Transactional
 	public void save(User t) {
 		userDAO.create(t);
 	}
 
-	@SuppressWarnings("unchecked")
 	@Override
 	@Transactional
 	public void delete(User t) {
 		userDAO.delete(t);
 	}
 
-	@SuppressWarnings("unchecked")
 	@Override
 	public User find(long id) {
 
 		return (User) userDAO.get(id);
 	}
 
-	@SuppressWarnings("unchecked")
 	@Override
 	public List<User> findAll() {
 		return userDAO.findAll();
