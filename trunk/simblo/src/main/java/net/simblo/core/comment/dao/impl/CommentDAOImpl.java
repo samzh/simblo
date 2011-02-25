@@ -6,9 +6,8 @@ import net.simblo.core.comment.vo.Comment;
 
 import org.springframework.stereotype.Repository;
 
-@SuppressWarnings("rawtypes")
 @Repository
-public class CommentDAOImpl extends BaseDao implements CommentDAO {
+public class CommentDAOImpl extends BaseDao<Comment> implements CommentDAO {
 	public CommentDAOImpl() {
 		super(Comment.class);
 	}

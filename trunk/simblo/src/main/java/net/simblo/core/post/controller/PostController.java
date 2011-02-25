@@ -7,7 +7,7 @@ import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
-import net.simblo.base.controller.BaseAction;
+import net.simblo.base.controller.BaseController;
 import net.simblo.core.category.service.CategoryService;
 import net.simblo.core.category.vo.Category;
 import net.simblo.core.post.service.PostService;
@@ -25,7 +25,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 @RequestMapping("/post")
-public class PostController extends BaseAction {
+public class PostController extends BaseController {
 
 	private static Logger log = LoggerFactory.getLogger(PostController.class);
 
@@ -72,14 +72,13 @@ public class PostController extends BaseAction {
 	public ModelAndView doSave(HttpServletRequest request, Post post) {
 		post.setCreated(new Date());
 		post.setUpdated(new Date());
-		System.out.println(post.getContent());
 		String categoryId = request.getParameter("categoryselect");
 		if (categoryId != null) {
 			Category category = categoryService.find(Long.parseLong(categoryId));
 			post.setCategory(category);
 		}
 		try {
-			postService.save(post);
+			postService.persist(post);
 		} catch (Exception e) {
 			log.info("What the hell! some troubles in posting! {}", e);
 			return new ModelAndView("/post/content");
@@ -91,7 +90,7 @@ public class PostController extends BaseAction {
 	public String doDelete(@PathVariable long id) {
 		Post post = (Post) postService.find(id);
 		try {
-			postService.delete(post);
+			postService.remove(post);
 		} catch (Exception e) {
 			e.printStackTrace();
 			log.error("删除出错: {}", e);

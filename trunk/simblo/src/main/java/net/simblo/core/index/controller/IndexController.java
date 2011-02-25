@@ -5,7 +5,7 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import net.simblo.base.controller.BaseAction;
+import net.simblo.base.controller.BaseController;
 import net.simblo.base.vo.ValueObject;
 import net.simblo.core.category.service.CategoryService;
 import net.simblo.core.category.vo.Category;
@@ -21,7 +21,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
-public class IndexController extends BaseAction {
+public class IndexController extends BaseController {
 
 	public IndexController() {
 		super(new ValueObject());

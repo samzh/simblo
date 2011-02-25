@@ -31,38 +31,38 @@ public class BaseDao<T> implements IDao, IGenericDao<T> {
 	private EntityManager em;
 
 	@Override
-	public void create(T entity) {
+	public void persist(T entity) {
 		em.persist(entity);
 
 	}
 
 	@Override
-	public void delete(T entity) {
+	public void remove(T entity) {
 		em.remove(entity);
 
 	}
 
 	@Override
-	public void update(T entity) {
+	public void merge(T entity) {
 		em.merge(entity);
 
 	}
 
 	@SuppressWarnings("unchecked")
 	@Override
-	public T get(Serializable id) {
+	public T find(Serializable id) {
 		return (T) em.find(clazz, id);
 	}
 
 	@SuppressWarnings("unchecked")
 	@Override
-	public List<T> findAll() {
+	public List<T> queryAll() {
 		return em.createQuery("select t from " + clazz.getSimpleName() + " t").getResultList();
 	}
 
 	@SuppressWarnings("unchecked")
 	@Override
-	public List<T> findList(int pageNo, int pageSize) {
+	public List<T> queryList(int pageNo, int pageSize) {
 		return em.createQuery("select t from " + this.clazz.getName() + " t")
 				.setFirstResult((pageNo - 1) * pageSize).setMaxResults(pageSize).getResultList();
 	}

@@ -14,33 +14,33 @@ import org.springframework.transaction.annotation.Transactional;
 public class PostServiceImpl implements PostService {
 
 	@Autowired
-	private PostDAO<Post> postDAO;
+	private PostDAO postDAO;
 
 	@Override
 	@Transactional
-	public void save(Post t) {
-		postDAO.create(t);
+	public void persist(Post t) {
+		postDAO.persist(t);
 	}
 
 	@Override
 	@Transactional
-	public void delete(Post t) {
-		postDAO.delete(t);
+	public void remove(Post t) {
+		postDAO.remove(t);
 	}
 
 	@Override
 	public Post find(long id) {
-		return (Post) postDAO.get(id);
+		return (Post) postDAO.find(id);
 	}
 
 	@Override
 	public List<Post> findAll() {
-		return postDAO.findAll();
+		return postDAO.queryAll();
 	}
 
 	@Override
 	public List<Post> listTopPosts(int currpage, int pageSize) {
-		return postDAO.findList(currpage, pageSize);
+		return postDAO.queryList(currpage, pageSize);
 	}
 
 	@Override
