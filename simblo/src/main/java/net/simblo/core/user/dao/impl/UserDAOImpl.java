@@ -6,9 +6,8 @@ import net.simblo.core.user.vo.User;
 
 import org.springframework.stereotype.Repository;
 
-@SuppressWarnings("rawtypes")
 @Repository
-public class UserDAOImpl extends BaseDao implements UserDAO {
+public class UserDAOImpl extends BaseDao<User> implements UserDAO {
 
 	public UserDAOImpl() {
 		super(User.class);

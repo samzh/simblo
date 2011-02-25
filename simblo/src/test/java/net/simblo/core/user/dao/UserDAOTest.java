@@ -29,8 +29,8 @@ public class UserDAOTest extends AbstractTransactionalJUnit4SpringContextTests {
 		user.setPassword("1111111");
 		user.setCreated(new Date());
 		user.setUpdated(new Date());
-		userDAO.create(user);
-		System.out.println(userDAO.findAll().size());
+		userDAO.persist(user);
+		System.out.println(userDAO.queryAll().size());
 	}
 
 }

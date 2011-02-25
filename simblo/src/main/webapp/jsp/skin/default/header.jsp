@@ -8,7 +8,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 
 <title>Simblo! - Make your Blog Simple</title>
-<link rel="stylesheet" href="css/default/style.css" dir="ltr" type="text/css" />
+<link rel="stylesheet" href="<c:url value='/css/default/style.css' />" dir="ltr" type="text/css" />
 <meta name="keywords" content="simple, blog, simblo, samzh, '博客'" />
 <meta name="robots" content="index,follow" />
 </head>

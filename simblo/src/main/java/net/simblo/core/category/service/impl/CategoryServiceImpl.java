@@ -14,31 +14,31 @@ import org.springframework.transaction.annotation.Transactional;
 public class CategoryServiceImpl implements CategoryService {
 
 	@Autowired
-	private CategoryDAO<Category> categoryDAO;
+	private CategoryDAO categoryDAO;
 
 	@Override
 	@Transactional
-	public void save(Category t) {
-		categoryDAO.create(t);
+	public void persist(Category t) {
+		categoryDAO.persist(t);
 
 	}
 
 	@Override
 	@Transactional
-	public void delete(Category t) {
-		categoryDAO.delete(t);
+	public void remove(Category t) {
+		categoryDAO.remove(t);
 
 	}
 
 	@Override
 	public Category find(long id) {
 
-		return (Category) categoryDAO.get(id);
+		return (Category) categoryDAO.find(id);
 	}
 
 	@Override
 	public List<Category> findAll() {
-		return categoryDAO.findAll();
+		return categoryDAO.queryAll();
 	}
 
 	@Override

@@ -1,7 +1,6 @@
 package net.simblo.base.controller;
 
 import java.util.Collection;
-import java.util.HashMap;
 import java.util.Map;
 
 import net.simblo.base.vo.ValueObject;
@@ -10,7 +9,7 @@ import net.simblo.base.vo.ValueObject;
  * @author Sam
  * 
  */
-public abstract class BaseAction {
+public abstract class BaseController {
 
 	/**
 	 * 
@@ -19,23 +18,19 @@ public abstract class BaseAction {
 
 	private ValueObject vo;
 
-	public BaseAction(ValueObject vo) {
+	public BaseController(ValueObject vo) {
 		this.vo = vo;
 	}
 
-	@SuppressWarnings("rawtypes")
-	private Collection dataList;
+	private Collection<? extends ValueObject> dataList;
 
-	@SuppressWarnings("rawtypes")
-	private Map dataMap = new HashMap();
+	private Map<String, ? extends ValueObject> dataMap;
 
-	@SuppressWarnings("rawtypes")
-	public void setDataList(Collection dataList) {
+	public void setDataList(Collection<? extends ValueObject> dataList) {
 		this.dataList = dataList;
 	}
 
-	@SuppressWarnings("rawtypes")
-	public Collection getDataList() {
+	public Collection<? extends ValueObject> getDataList() {
 		return dataList;
 	}
 
@@ -47,13 +42,11 @@ public abstract class BaseAction {
 		return vo;
 	}
 
-	@SuppressWarnings("rawtypes")
-	public void setDataMap(Map dataMap) {
+	public void setDataMap(Map<String, ? extends ValueObject> dataMap) {
 		this.dataMap = dataMap;
 	}
 
-	@SuppressWarnings("rawtypes")
-	public Map getDataMap() {
+	public Map<String, ? extends ValueObject> getDataMap() {
 		return dataMap;
 	}
 

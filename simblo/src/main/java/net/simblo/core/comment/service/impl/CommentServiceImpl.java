@@ -14,32 +14,32 @@ import org.springframework.transaction.annotation.Transactional;
 public class CommentServiceImpl implements CommentService {
 
 	@Autowired
-	private CommentDAO<Comment> commentDAO;
+	private CommentDAO commentDAO;
 
 	@Override
 	@Transactional
-	public void save(Comment t) {
-		commentDAO.create(t);
+	public void persist(Comment t) {
+		commentDAO.persist(t);
 
 	}
 
 	@Override
 	@Transactional
-	public void delete(Comment t) {
-		commentDAO.delete(t);
+	public void remove(Comment t) {
+		commentDAO.remove(t);
 
 	}
 
 	@Override
 	public Comment find(long id) {
 
-		return (Comment) commentDAO.get(id);
+		return (Comment) commentDAO.find(id);
 	}
 
 	@Override
 	public List<Comment> findAll() {
 
-		return commentDAO.findAll();
+		return commentDAO.queryAll();
 	}
 
 	@Override

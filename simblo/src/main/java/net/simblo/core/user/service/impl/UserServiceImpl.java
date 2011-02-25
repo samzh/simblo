@@ -12,29 +12,29 @@ import org.springframework.transaction.annotation.Transactional;
 public class UserServiceImpl implements UserService {
 
 	@Autowired
-	private UserDAO<User> userDAO;
+	private UserDAO userDAO;
 
 	@Override
 	@Transactional
-	public void save(User t) {
-		userDAO.create(t);
+	public void persist(User t) {
+		userDAO.persist(t);
 	}
 
 	@Override
 	@Transactional
-	public void delete(User t) {
-		userDAO.delete(t);
+	public void remove(User t) {
+		userDAO.remove(t);
 	}
 
 	@Override
 	public User find(long id) {
 
-		return (User) userDAO.get(id);
+		return (User) userDAO.find(id);
 	}
 
 	@Override
 	public List<User> findAll() {
-		return userDAO.findAll();
+		return userDAO.queryAll();
 	}
 
 	@Override

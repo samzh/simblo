@@ -12,17 +12,17 @@ import java.util.List;
  */
 public interface IGenericDao<T> {
 
-	void create(T entity);
+	void persist(T entity);
 
-	void delete(T entity);
+	void remove(T entity);
 
-	void update(T entity);
+	void merge(T entity);
 
-	T get(Serializable id);
+	T find(Serializable id);
 
-	List<T> findAll();
+	List<T> queryAll();
 
-	List<T> findList(int pageNo, int pageSize);
+	List<T> queryList(int pageNo, int pageSize);
 	
 	long getCount();
 

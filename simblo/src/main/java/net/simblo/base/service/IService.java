@@ -4,9 +4,9 @@ import java.util.List;
 
 public interface IService<T> {
 
-	void save(T t);
+	void persist(T t);
 
-	void delete(T t);
+	void remove(T t);
 
 	T find(long id);
 
